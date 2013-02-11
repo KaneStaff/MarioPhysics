@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C# Express 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mario", "TJ Platformer\TJ Platformer\Mario.csproj", "{3FCFCA46-A23E-4578-8AEF-A3CB235CA0A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarioContent", "TJ Platformer\TJ PlatformerContent\MarioContent.contentproj", "{016BD996-1523-41DA-80FA-C3A110C58383}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FCFCA46-A23E-4578-8AEF-A3CB235CA0A5}.Debug|x86.ActiveCfg = Debug|x86
+		{3FCFCA46-A23E-4578-8AEF-A3CB235CA0A5}.Debug|x86.Build.0 = Debug|x86
+		{3FCFCA46-A23E-4578-8AEF-A3CB235CA0A5}.Release|x86.ActiveCfg = Release|x86
+		{3FCFCA46-A23E-4578-8AEF-A3CB235CA0A5}.Release|x86.Build.0 = Release|x86
+		{016BD996-1523-41DA-80FA-C3A110C58383}.Debug|x86.ActiveCfg = Debug|x86
+		{016BD996-1523-41DA-80FA-C3A110C58383}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
