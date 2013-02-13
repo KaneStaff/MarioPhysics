@@ -39,7 +39,7 @@ namespace Mario
         public override void LoadContent(ContentManager Content)
         {
             base.LoadContent(Content);
-            collision = new Rectangle(0, 0, area.Width - 4, area.Height);
+            collision = new Rectangle(0, 0, area.Width - 2, area.Height);
         }
 
         public void Update(ContentManager Content)
@@ -162,6 +162,7 @@ namespace Mario
                 }
             }
             position += new Vector2(hspeed, 0);
+            UpdateCollisionRect();
             if (InputDevice.IsKeyPressed(Keys.Space) && grounded == true)
                 spacetime = 0;
             if (InputDevice.IsKeyDown(Keys.Space))
@@ -173,15 +174,16 @@ namespace Mario
             if (InputDevice.IsKeyReleased(Keys.Space))
                 spacetime = 100;
             vspeed = MathHelper.Clamp(vspeed, -vspd, vspd);
-            collision.Y += (int)vspeed;
+            Rectangle collRect = collision;
+            collRect.Y += (int)vspeed;
             bool canMove = true;
             foreach (Block o in Game1.blocks)
             {
-                if (collision.Intersects(o.collision))
+                if (collRect.Intersects(o.collision))
                 {
                     if (position.Y > o.position.Y)
                     {
-                        position.Y = o.position.Y + (o.collision.Height / 2) + (collision.Height / 2);
+                        position.Y = o.position.Y + (o.collision.Height / 2) + (collRect.Height / 2);
                         UpdateCollisionRect();
                         vspeed = -vspeed;
                         spacetime = 100;
@@ -190,7 +192,7 @@ namespace Mario
                     }
                     if (position.Y < o.position.Y)
                     {
-                        position.Y = o.position.Y - (o.collision.Height / 2) - (collision.Height / 2);
+                        position.Y = o.position.Y - (o.collision.Height / 2) - (collRect.Height / 2);
                         UpdateCollisionRect();
                         vspeed = 0;
                         canMove = false;
@@ -222,7 +224,10 @@ namespace Mario
                 }
             }
             if (canMove)
+            {
                 position += new Vector2(0, vspeed);
+                UpdateCollisionRect();
+            }
             if (position.X - (area.Width / 2) < 0)
             {
                 position.X -= hspeed;
@@ -252,7 +257,7 @@ namespace Mario
                 }
             }
             base.Update();
-            List<FireBall> removing = new List<FireBall>() ;
+            List<FireBall> removing = new List<FireBall>();
             foreach (FireBall f in fireBalls)
             {
                 f.Update(this);

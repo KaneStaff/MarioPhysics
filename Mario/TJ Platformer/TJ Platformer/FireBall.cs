@@ -107,8 +107,10 @@ namespace Mario
                 }
                 vspeed = MathHelper.Clamp(vspeed, -vspd, vspd);
                 if (canMove)
+                {
                     position += new Vector2(0, vspeed);
-                UpdateCollisionRect();
+                    UpdateCollisionRect();
+                }
                 if (position.X - (area.Width / 2) < 0)
                 {
                     position.X -= hspeed;

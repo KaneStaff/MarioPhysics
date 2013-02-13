@@ -40,9 +40,13 @@ namespace Mario
         {
             if (alive)
             {
-                if (aliveprev != alive)
+                if (aliveprev != alive && mario.powerLevel < mario.powerLevelCap)
                 {
                     frame = mario.powerLevel;
+                }
+                if (aliveprev != alive && mario.powerLevel == mario.powerLevelCap)
+                {
+                    frame = mario.powerLevel - 1;
                 }
                 foreach (Block o in Game1.blocks)
                 {
@@ -117,8 +121,10 @@ namespace Mario
                 }
                 vspeed = MathHelper.Clamp(vspeed, -vspd, vspd);
                 if (canMove)
+                {
                     position += new Vector2(0, vspeed);
-                UpdateCollisionRect();
+                    UpdateCollisionRect();
+                }
                 if (position.X - (area.Width / 2) < 0)
                 {
                     position.X -= hspeed;
